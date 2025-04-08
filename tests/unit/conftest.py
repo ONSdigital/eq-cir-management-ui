@@ -1,6 +1,6 @@
 import pytest
 
-from {{ module_name }}.calculator import Calculator
+from eq_cir_management_ui.calculator import Calculator
 
 
 @pytest.fixture()

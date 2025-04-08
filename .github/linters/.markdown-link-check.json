@@ -1,9 +1,5 @@
 {
-  "ignorePatterns": [
-    {
-      "pattern": "ons-python-template/generate"
-    }
-  ],
+  "ignorePatterns": [],
   "retryOn429": true,
   "retryCount": 3,
   "fallbackRetryDelay": "30s"
