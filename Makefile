@@ -1,4 +1,5 @@
 .DEFAULT_GOAL := all
+LOG_LEVEL = INFO
 
 .PHONY: all
 all: ## Show the available make targets.
@@ -24,7 +25,12 @@ format:  ## Format the code.
 lint:  ## Run all linters (black/ruff/pylint/mypy).
 	poetry run black --check .
 	poetry run ruff check .
+	poetry run pylint -j 0 eq_cir_management_ui tests --reports=n --output-format=colorized
 	make mypy
+
+.PHONY: run
+run:  ## Run flask on port 5100.
+	poetry run flask --app eq_cir_management_ui.app run --port 5100
 
 .PHONY: test
 test:  ## Run the tests and check coverage.
@@ -47,4 +53,4 @@ megalint:  ## Run the mega-linter.
 	docker run --platform linux/amd64 --rm \
 		-v /var/run/docker.sock:/var/run/docker.sock:rw \
 		-v $(shell pwd):/tmp/lint:rw \
-		oxsecurity/megalinter:v7
+		oxsecurity/megalinter:v8
