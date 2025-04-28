@@ -12,7 +12,8 @@
 ### How to test?
 
 <!--- Describe in detail how you tested your changes. -->
-<!--- Include details of your testing environment, and the tests you ran to see how your change affects other areas of the code, etc. -->
+<!--- Include details of your testing environment, and the tests you ran
+to see how your change affects other areas of the code, etc. -->
 <!--- Are there any automated tests that mean changes don't need to be manually changed -->
 
 ### Links
@@ -21,4 +22,4 @@
 <!--- Links to any documentation -->
 <!--- Links to any related PRs -->
 
-### Screenshots (if appropriate):
+### Screenshots (if appropriate)
