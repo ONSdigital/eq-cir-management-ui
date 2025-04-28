@@ -53,4 +53,4 @@ megalint:  ## Run the mega-linter.
 	docker run --platform linux/amd64 --rm \
 		-v /var/run/docker.sock:/var/run/docker.sock:rw \
 		-v $(shell pwd):/tmp/lint:rw \
-		oxsecurity/megalinter-python:v8.5.0
+		oxsecurity/megalinter-python:v8.6.0
