@@ -10,6 +10,10 @@ package-mode = false
 [tool.poetry.dependencies]
 python = "^3.12"
 flask = "^3.1.0"
+flask-talisman = "^1.1.0"
+requests = "^2.32.3"
+wtforms = "^3.2.1"
+flask-wtf = "^1.2.2"
 
 [tool.poetry.group.dev.dependencies]
 # :TODO: Remove pylint when ruff supports all pylint rules

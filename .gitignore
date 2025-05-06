@@ -169,3 +169,6 @@ copier_scripts/
 
 # DS_Store files
 .DS_Store
+
+# Node Modules
+node_modules/
