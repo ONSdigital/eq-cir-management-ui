@@ -2,7 +2,8 @@
 
 import pytest
 
-from eq_cir_management_ui.app import create_app
+from eq_cir_management_ui import create_app
+from eq_cir_management_ui.config import config
 
 
 @pytest.fixture
@@ -15,7 +16,7 @@ def test_client():
     Yields:
         FlaskClient: A test client instance for the application.
     """
-    app = create_app()
+    app = create_app(config.DefaultConfig)
     app.config["TESTING"] = True
 
     with app.test_client() as client:
@@ -27,8 +28,17 @@ def test_index_route(test_client):  # pylint: disable=redefined-outer-name
 
     This test sends a GET request to the root URL ("/") using the test client
     and verifies that the response has a status code of 200 and contains
-    the expected content "Hello, World!" in the response data.
+    the expected content "CI migration process" in the response data.
     """
     response = test_client.get("/")
     assert response.status_code == 200
-    assert b"Hello, World!" in response.data
+    assert b"CI migration process" in response.data
+
+
+def test_health_check(test_client):  # pylint: disable=redefined-outer-name
+    """GIVEN a call to the health check.
+    THEN 200 is returned.
+    """
+    response = test_client.get("/health-check")
+
+    assert response.status_code == 200
