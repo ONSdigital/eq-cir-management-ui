@@ -6,6 +6,7 @@ import os
 from pathlib import Path
 
 from flask import Flask
+from flask_talisman import Talisman
 from jinja2 import ChainableUndefined, ChoiceLoader, FileSystemLoader
 
 from eq_cir_management_ui.config.config import DefaultConfig
@@ -14,6 +15,8 @@ from eq_cir_management_ui.main.routes import main_blueprint
 from eq_cir_management_ui.utils.routes import utils_blueprint
 
 logger = logging.getLogger()
+
+talisman = Talisman()
 
 
 def create_app(app_config: type[DefaultConfig]) -> Flask:
@@ -31,6 +34,7 @@ def create_app(app_config: type[DefaultConfig]) -> Flask:
 
     jinja_config(app)
     design_system_config(app)
+    configure_secure_headers(app)
 
     return app
 
@@ -75,3 +79,41 @@ def design_system_config(app: Flask) -> None:
         return os.getenv(key, value)
 
     app.jinja_env.filters["env_override"] = env_override
+
+
+def configure_secure_headers(app: Flask) -> None:
+    """Use Flask-Talisman to configure secure headers for the application.
+
+    :param app: The Flask application.
+    """
+    csp = {
+        "default-src": ["'self'", app.config["CDN_URL"]],
+        "font-src": ["'self'", app.config["CDN_URL"]],
+        "script-src": [
+            "'self'",
+            "'unsafe-inline'",
+            app.config["CDN_URL"],
+            "https://*.googletagmanager.com",
+            "https://*.google-analytics.com",
+        ],
+        "style-src": ["'self'", "'unsafe-inline'", app.config["CDN_URL"]],
+        "connect-src": [
+            "'self'",
+            "https://*.googletagmanager.com",
+            "https://*.google-analytics.com",
+        ],
+        "frame-src": [],
+        "img-src": ["'self'", "data:"],
+        "object-src": ["'none'"],
+        "base-uri": ["'none'"],
+        "manifest-src": ["'self'"],
+    }
+    talisman.init_app(
+        app,
+        force_https=False,  # HTTPS is managed by infrastructure
+        content_security_policy=csp,
+        frame_options="DENY",
+        strict_transport_security=True,
+        strict_transport_security_max_age=31536000,
+        session_cookie_secure=app.config["SESSION_COOKIE_SECURE"],
+    )
