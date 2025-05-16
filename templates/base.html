@@ -1,0 +1,37 @@
+{%- extends 'layout/_template.njk' -%}
+
+{# To update the version, alter the package.json file #}
+{%- set design_system_version = ( "72.9.0" | env_override("DESIGN_SYSTEM_VERSION") ) -%}
+{%-
+  set pageConfig = {
+      "title": 'Collection Instrument Migration Service (CIMS)',
+      "cdn": {
+          "url": "https://cdn.ons.gov.uk/sdc/design-system/",
+          "version": design_system_version
+      },
+      "wide": true,
+  }
+-%}
+
+{%- block header -%}
+  {%- from "components/header/_macro.njk" import onsHeader -%}
+  {{
+    onsHeader({
+        "title": "CIMS Management",
+        "wide": true,
+        "mastheadlogoUrl": "/",
+        "variants": 'internal',
+    })
+  }}
+{%- endblock header -%}
+
+{%- block footer -%}
+
+  {%- from "components/footer/_macro.njk" import onsFooter -%}
+
+  {{
+    onsFooter({
+        "wide": true,
+    })
+  }}
+{%- endblock footer -%}

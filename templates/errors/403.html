@@ -1,0 +1,24 @@
+{%- extends 'base.html' -%}
+{%- from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs -%}
+
+{%- block preMain -%}
+
+  {{
+    onsBreadcrumbs({
+        "ariaLabel": 'Breadcrumbs',
+        "itemsList": [
+            {
+                "url": '/',
+                "text": 'Home'
+            }
+        ]
+    })
+  }}
+{%- endblock preMain -%}
+
+{%- block main -%}
+  <h1 class="ons-u-mb-xl">Forbidden</h1>
+  <div class="ons-page__body">
+    <p>You do not have permission to view this page</p>
+  </div>
+{%- endblock main -%}

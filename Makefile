@@ -30,7 +30,7 @@ lint:  ## Run all linters (black/ruff/pylint/mypy).
 
 .PHONY: run
 run:  ## Run flask on port 5100.
-	poetry run flask --app eq_cir_management_ui.app run --port 5100
+	poetry run flask --app app run --port 5100
 
 .PHONY: test
 test:  ## Run the tests and check coverage.

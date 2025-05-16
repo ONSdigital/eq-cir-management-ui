@@ -1,0 +1,15 @@
+{
+  "name": "eq-cir-management-ui",
+  "version": "1.0.0",
+  "description": "This package.json file is used to manage the ONS Design System dependency - other dependencies should be managed using poetry if possible.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ONSdigital/eq-cir-management-ui.git"
+  },
+  "private": true,
+  "dependencies": {
+    "@ons/design-system": "72.9.0",
+    "prettier": "^3.5.3",
+    "prettier-plugin-jinja-template": "^2.1.0"
+  }
+}
