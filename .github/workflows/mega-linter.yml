@@ -74,6 +74,11 @@ jobs:
             echo "APPLY_FIXES=none" >> "$GITHUB_ENV"
           fi
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
       - name: Install Prettier and plugins
         run: npm ci
 
