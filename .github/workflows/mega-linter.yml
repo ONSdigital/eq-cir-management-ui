@@ -79,8 +79,8 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Install Prettier and plugins
-        run: npm ci
+      - name: Install Design System, Prettier and plugins
+        run: yarn
 
       # MegaLinter
       - name: MegaLinter
