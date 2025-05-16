@@ -7,7 +7,7 @@
     "url": "git+https://github.com/ONSdigital/eq-cir-management-ui.git"
   },
   "private": true,
-  "devDependencies": {
+  "dependencies": {
     "@ons/design-system": "72.9.0",
     "prettier": "^3.5.3",
     "prettier-plugin-jinja-template": "^2.1.0"
