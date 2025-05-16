@@ -74,6 +74,9 @@ jobs:
             echo "APPLY_FIXES=none" >> "$GITHUB_ENV"
           fi
 
+      - name: Install Prettier and plugins
+        run: npm ci
+
       # MegaLinter
       - name: MegaLinter
 
