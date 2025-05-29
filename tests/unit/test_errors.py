@@ -26,13 +26,13 @@ def test_client():
 def test_error_404_route(test_client):  # pylint: disable=redefined-outer-name
     """Test the 404 route of the application.
 
-    This test sends a GET request to a non-existent URL ("/cheese-scone") using the test client
-    and verifies that the response has a status code of 404 and contains
+    This test sends a GET request to a non-existent URL ("/page-not-found") using the 
+    test client and verifies that the response has a status code of 404 and contains
     the expected content "Page not found" in the response data.
     """
-    response = test_client.get("/cheese-scone")
+    response = test_client.get("/page-not-found")
     assert response.status_code == 404
-    assert b"Page not found" in response.data
+    assert "Page not found" in response.get_data(as_text=True)
 
 
 def test_error_405_route(test_client):  # pylint: disable=redefined-outer-name

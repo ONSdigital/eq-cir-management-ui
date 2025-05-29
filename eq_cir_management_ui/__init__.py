@@ -40,7 +40,7 @@ def create_app(app_config: type[DefaultConfig]) -> Flask:
 
 
 def jinja_config(app: Flask) -> None:
-    """Configuration for the Flask Jinja2 component. Here we provide a customer loader,
+    """Configuration for the Flask Jinja2 component. Here we provide a custom loader,
     so we can load from an array of sources.
 
     :param app: The Flask application.
@@ -70,7 +70,9 @@ def design_system_config(app: Flask) -> None:
         design_system_version = package_json["dependencies"]["@ons/design-system"]
 
         # Ensure version number only consists of numbers and fullstops.
-        design_system_version = "".join(filter(lambda s: (s.isnumeric() or s == "."), design_system_version))
+        def is_valid_version_char(s: str) -> bool: 
+            return s.isnumeric() or s == "." 
+        design_system_version = "".join(filter(is_valid_version_char, design_system_version))
 
         os.environ["DESIGN_SYSTEM_VERSION"] = design_system_version
 

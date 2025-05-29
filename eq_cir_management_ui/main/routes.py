@@ -17,8 +17,8 @@ logger = logging.getLogger(__name__)
 def before_request_func() -> None:
     """Log the request before it is processed."""
     if request.endpoint != "health-check":
-        msg = "Request received"
-        logger.info(msg)
+        message = "Request received"
+        logger.info(message)
 
 
 @main_blueprint.route("/", methods=["GET"])
