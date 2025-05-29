@@ -35,6 +35,16 @@ def test_index_route(test_client):  # pylint: disable=redefined-outer-name
     assert b"CI migration process" in response.data
 
 
+def test_index_route_post_method_not_allowed(test_client):  # pylint: disable=redefined-outer-name
+    """Test the index route with POST method.
+
+    This test sends a POST request to the root URL ("/") using the test client
+    and verifies that the response has a status code of 405 (Method Not Allowed).
+    """
+    response = test_client.post("/")
+    assert response.status_code == 405
+
+
 def test_health_check(test_client):  # pylint: disable=redefined-outer-name
     """GIVEN a call to the health check.
     THEN 200 is returned.

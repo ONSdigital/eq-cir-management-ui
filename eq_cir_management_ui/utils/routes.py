@@ -7,6 +7,12 @@ from flask import Blueprint, abort
 utils_blueprint = Blueprint("utils", __name__)
 
 
+@utils_blueprint.route("/400")
+def trigger_400() -> NoReturn:
+    """Simulate an unauthorized error."""
+    abort(400)
+
+
 @utils_blueprint.route("/401")
 def trigger_401() -> NoReturn:
     """Simulate an unauthorized error."""
@@ -17,6 +23,12 @@ def trigger_401() -> NoReturn:
 def trigger_403() -> NoReturn:
     """Simulate a forbidden error."""
     abort(403)
+
+
+@utils_blueprint.route("/405")
+def trigger_405() -> NoReturn:
+    """Simulate an unauthorized error."""
+    abort(405)
 
 
 @utils_blueprint.route("/500")

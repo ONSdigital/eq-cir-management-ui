@@ -21,7 +21,7 @@ jobs:
         run: pipx install poetry==2.1.2
 
       - name: Install Design System
-        run: yarn
+        run: npm
 
       - name: Set up Python
         uses: actions/setup-python@v5

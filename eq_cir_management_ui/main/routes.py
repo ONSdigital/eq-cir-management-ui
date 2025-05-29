@@ -30,7 +30,7 @@ def home() -> str:
     return render_template("home.html")
 
 
-@main_blueprint.route("/health-check")
+@main_blueprint.route("/health-check", methods=["GET"])
 def health() -> tuple[str, int]:
     """Health check endpoint.
 

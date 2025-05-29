@@ -3,8 +3,10 @@
 from flask import Blueprint, render_template, request
 from structlog import get_logger
 from werkzeug.exceptions import (
+    BadRequest,
     Forbidden,
     InternalServerError,
+    MethodNotAllowed,
     NotFound,
     Unauthorized,
 )
@@ -24,6 +26,16 @@ def log_exception(exception: Exception, status_code: int) -> None:
         url=request.url,
         status_code=status_code,
     )
+
+
+@errors_blueprint.app_errorhandler(400)
+def bad_request(exception: BadRequest) -> tuple[str, int]:
+    """400 page.
+    :return: Rendered HTML.
+    This is deliberately returning the 500 page.
+    """
+    log_exception(exception, 400)
+    return render_template("errors/500.html"), 400
 
 
 @errors_blueprint.app_errorhandler(401)
@@ -52,6 +64,16 @@ def page_not_found(exception: NotFound) -> tuple[str, int]:
     """
     log_exception(exception, 404)
     return render_template("errors/404.html"), 404
+
+
+@errors_blueprint.app_errorhandler(405)
+def method_not_allowed(exception: MethodNotAllowed) -> tuple[str, int]:
+    """405 page.
+    :return: Rendered HTML.
+    This is deliberately returning the 404 page.
+    """
+    log_exception(exception, 405)
+    return render_template("errors/404.html"), 405
 
 
 @errors_blueprint.app_errorhandler(500)

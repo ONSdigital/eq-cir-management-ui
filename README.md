@@ -28,7 +28,7 @@ eq-cir-management-ui
     - [Linting and Formatting](#linting-and-formatting)
 - [Contributing](#contributing)
 - [License](#license)
-    <!-- markdown-link-check-enable -->
+      <!-- markdown-link-check-enable -->
 
 ## Getting Started
 
@@ -89,10 +89,11 @@ make
 
 ## ONS Design System
 
-The ONS design system needs to be installed using [yarn](https://classic.yarnpkg.com/en/).
-Ensure yarn is installed by running `yarn --version`.
+The ONS design system needs to be installed using [npm](https://www.npmjs.com/).
+To install the ONS Design System npm package you will need to install [node.js](https://nodejs.org/en/).
+Then:
 
-- Run `yarn` from the project root directory.
+- Run `npm install` from the project root directory.
 
 This will install the design system into a local node_modules folder.
 The `@ons/design-system` package is then automatically added to the jinja configuration.

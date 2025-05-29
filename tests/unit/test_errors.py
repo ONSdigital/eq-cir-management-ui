@@ -35,6 +35,19 @@ def test_error_404_route(test_client):  # pylint: disable=redefined-outer-name
     assert b"Page not found" in response.data
 
 
+def test_error_405_route(test_client):  # pylint: disable=redefined-outer-name
+    """Test the 405 route of the application.
+
+    This test sends a GET request to a non-existent URL ("/405") using the test client
+    and verifies that the response has a status code of 405 and contains
+    the expected content "Page not found" in the response data,
+    as the 405 error returns the 404 error page.
+    """
+    response = test_client.get("/405")
+    assert response.status_code == 405
+    assert b"Page not found" in response.data
+
+
 def test_error_500_route(test_client):  # pylint: disable=redefined-outer-name
     """Test the 500 route of the application.
 
@@ -44,6 +57,19 @@ def test_error_500_route(test_client):  # pylint: disable=redefined-outer-name
     """
     response = test_client.get("/500")
     assert response.status_code == 500
+    assert b"Sorry, there is a problem with the service" in response.data
+
+
+def test_error_400_route(test_client):  # pylint: disable=redefined-outer-name
+    """Test the 400 route of the application.
+
+    This test sends a GET request to a non-existent URL ("/400") using the test client
+    and verifies that the response has a status code of 400 and contains
+    the expected content "Internal Server Error" in the response data,
+    as the 400 error returns the 500 error page.
+    """
+    response = test_client.get("/400")
+    assert response.status_code == 400
     assert b"Sorry, there is a problem with the service" in response.data
 
 

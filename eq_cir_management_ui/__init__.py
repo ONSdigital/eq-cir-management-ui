@@ -91,12 +91,11 @@ def configure_secure_headers(app: Flask) -> None:
         "font-src": ["'self'", app.config["CDN_URL"]],
         "script-src": [
             "'self'",
-            "'unsafe-inline'",
             app.config["CDN_URL"],
             "https://*.googletagmanager.com",
             "https://*.google-analytics.com",
         ],
-        "style-src": ["'self'", "'unsafe-inline'", app.config["CDN_URL"]],
+        "style-src": ["'self'", app.config["CDN_URL"]],
         "connect-src": [
             "'self'",
             "https://*.googletagmanager.com",
