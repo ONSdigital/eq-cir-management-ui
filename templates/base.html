@@ -2,9 +2,16 @@
 
 {# To update the version, alter the package.json file #}
 {%- set design_system_version = ( "72.9.0" | env_override("DESIGN_SYSTEM_VERSION") ) -%}
+
+{% if page_title %}
+  {% set page_title_value = page_title + ' - Collection Instrument Migration Service (CIMS)' %}
+{% else %}
+  {% set page_title_value = 'Collection Instrument Migration Service (CIMS)' %}
+{% endif %}
+
 {%-
   set pageConfig = {
-      "title": 'Collection Instrument Migration Service (CIMS)',
+      "title": page_title_value,
       "cdn": {
           "url": "https://cdn.ons.gov.uk/sdc/design-system/",
           "version": design_system_version

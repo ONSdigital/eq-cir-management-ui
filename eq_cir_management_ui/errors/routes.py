@@ -35,7 +35,8 @@ def bad_request(exception: BadRequest) -> tuple[str, int]:
     This is deliberately returning the 500 page.
     """
     log_exception(exception, 400)
-    return render_template("errors/500.html"), 400
+    page_title = "Internal Server Error"
+    return render_template("errors/500.html", page_title=page_title), 400
 
 
 @errors_blueprint.app_errorhandler(401)
@@ -44,8 +45,8 @@ def unauthorized(exception: Unauthorized) -> tuple[str, int]:
     :return: Rendered HTML.
     """
     log_exception(exception, 401)
-
-    return render_template("errors/401.html"), 401
+    page_title = "Unauthorised"
+    return render_template("errors/401.html", page_title=page_title), 401
 
 
 @errors_blueprint.app_errorhandler(403)
@@ -54,7 +55,8 @@ def forbidden(exception: Forbidden) -> tuple[str, int]:
     :return: Rendered HTML.
     """
     log_exception(exception, 403)
-    return render_template("errors/403.html"), 403
+    page_title = "Forbidden"
+    return render_template("errors/403.html", page_title=page_title), 403
 
 
 @errors_blueprint.app_errorhandler(404)
@@ -63,7 +65,8 @@ def page_not_found(exception: NotFound) -> tuple[str, int]:
     :return: Rendered HTML.
     """
     log_exception(exception, 404)
-    return render_template("errors/404.html"), 404
+    page_title = "Page not found"
+    return render_template("errors/404.html", page_title=page_title), 404
 
 
 @errors_blueprint.app_errorhandler(405)
@@ -73,7 +76,8 @@ def method_not_allowed(exception: MethodNotAllowed) -> tuple[str, int]:
     This is deliberately returning the 404 page.
     """
     log_exception(exception, 405)
-    return render_template("errors/404.html"), 405
+    page_title = "Page not found"
+    return render_template("errors/404.html", page_title=page_title), 405
 
 
 @errors_blueprint.app_errorhandler(500)
@@ -82,4 +86,5 @@ def internal_server_error(exception: InternalServerError) -> tuple[str, int]:
     :return: Rendered HTML.
     """
     log_exception(exception, 500)
-    return render_template("errors/500.html"), 500
+    page_title = "Internal Server Error"
+    return render_template("errors/500.html", page_title=page_title), 500

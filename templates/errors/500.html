@@ -1,20 +1,4 @@
-{%- extends 'base.html' -%}
-{%- from "components/breadcrumbs/_macro.njk" import onsBreadcrumbs -%}
-
-{%- block preMain -%}
-
-  {{
-    onsBreadcrumbs({
-        "ariaLabel": 'Breadcrumbs',
-        "itemsList": [
-            {
-                "url": '/',
-                "text": 'Home'
-            }
-        ]
-    })
-  }}
-{%- endblock preMain -%}
+{%- extends 'errors/base-error.html' -%}
 
 {%- block main -%}
   <h1 class="ons-u-mb-xl">Sorry, there is a problem with the service</h1>
