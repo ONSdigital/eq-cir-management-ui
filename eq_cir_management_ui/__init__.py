@@ -70,8 +70,9 @@ def design_system_config(app: Flask) -> None:
         design_system_version = package_json["dependencies"]["@ons/design-system"]
 
         # Ensure version number only consists of numbers and fullstops.
-        def is_valid_version_char(s: str) -> bool: 
-            return s.isnumeric() or s == "." 
+        def is_valid_version_char(s: str) -> bool:
+            return s.isnumeric() or s == "."
+
         design_system_version = "".join(filter(is_valid_version_char, design_system_version))
 
         os.environ["DESIGN_SYSTEM_VERSION"] = design_system_version
