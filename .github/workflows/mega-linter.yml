@@ -75,7 +75,7 @@ jobs:
           fi
 
       - name: Install Design System, Prettier and plugins
-        run: npm
+        run: npm install
 
       # MegaLinter
       - name: MegaLinter
