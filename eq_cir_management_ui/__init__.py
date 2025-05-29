@@ -102,15 +102,16 @@ def configure_secure_headers(app: Flask) -> None:
             "https://*.google-analytics.com",
         ],
         "frame-src": [],
-        "img-src": ["'self'", "data:"],
+        "img-src": ["'self'", "data:", app.config["CDN_URL"]],
         "object-src": ["'none'"],
         "base-uri": ["'none'"],
-        "manifest-src": ["'self'"],
+        "manifest-src": ["'self'", app.config["CDN_URL"]],
     }
     talisman.init_app(
         app,
         force_https=False,  # HTTPS is managed by infrastructure
         content_security_policy=csp,
+        content_security_policy_nonce_in=["script-src"],
         frame_options="DENY",
         strict_transport_security=True,
         strict_transport_security_max_age=31536000,

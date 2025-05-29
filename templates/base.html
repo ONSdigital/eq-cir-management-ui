@@ -10,6 +10,7 @@
           "version": design_system_version
       },
       "wide": true,
+      "cspNonce": cspNonce,
   }
 -%}
 
@@ -26,7 +27,6 @@
 {%- endblock header -%}
 
 {%- block footer -%}
-
   {%- from "components/footer/_macro.njk" import onsFooter -%}
 
   {{
