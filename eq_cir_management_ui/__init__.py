@@ -33,10 +33,18 @@ def create_app(app_config: type[DefaultConfig]) -> Flask:
     app.register_blueprint(utils_blueprint)
 
     jinja_config(app)
-    design_system_config(app)
+    design_system_config()
     configure_secure_headers(app)
 
     return app
+
+
+def env_override(value: str, key: str) -> str:
+    """Add a custom filter to Jinja to retrieve environment variables.
+
+    :param app: The Flask application.
+    """
+    return os.getenv(key, value)
 
 
 def jinja_config(app: Flask) -> None:
@@ -55,8 +63,10 @@ def jinja_config(app: Flask) -> None:
     app.jinja_env.trim_blocks = True
     app.jinja_env.lstrip_blocks = True
 
+    app.jinja_env.filters["env_override"] = env_override
 
-def design_system_config(app: Flask) -> None:
+
+def design_system_config() -> None:
     """Set the version of the design system to an environment variable and add an
     environment variable filter so environment variables can be read from within
     Jinja. This enables the design system version to be defined once within the
@@ -76,12 +86,6 @@ def design_system_config(app: Flask) -> None:
         design_system_version = "".join(filter(is_valid_version_char, design_system_version))
 
         os.environ["DESIGN_SYSTEM_VERSION"] = design_system_version
-
-    # Add a custom filter to Jinja to retrieve environment variables.
-    def env_override(value: str, key: str) -> str:
-        return os.getenv(key, value)
-
-    app.jinja_env.filters["env_override"] = env_override
 
 
 def configure_secure_headers(app: Flask) -> None:
