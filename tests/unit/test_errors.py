@@ -6,8 +6,8 @@ from eq_cir_management_ui import create_app
 from eq_cir_management_ui.config import config
 
 
-@pytest.fixture
-def test_client():
+@pytest.fixture(name="test_client")
+def create_client():
     """Creates and configures a test client for the application.
 
     This function initializes the application in testing mode and provides
@@ -23,7 +23,7 @@ def test_client():
         yield client
 
 
-def test_error_404_route(test_client):  # pylint: disable=redefined-outer-name
+def test_error_404_route(test_client):
     """Test the 404 route of the application.
 
     This test sends a GET request to a non-existent URL ("/page-not-found") using the
@@ -35,7 +35,7 @@ def test_error_404_route(test_client):  # pylint: disable=redefined-outer-name
     assert "Page not found" in response.get_data(as_text=True)
 
 
-def test_error_405_route(test_client):  # pylint: disable=redefined-outer-name
+def test_error_405_route(test_client):
     """Test the 405 route of the application.
 
     This test sends a GET request to a non-existent URL ("/405") using the test client
@@ -45,10 +45,10 @@ def test_error_405_route(test_client):  # pylint: disable=redefined-outer-name
     """
     response = test_client.get("/405")
     assert response.status_code == 405
-    assert b"Page not found" in response.data
+    assert "Page not found" in response.get_data(as_text=True)
 
 
-def test_error_500_route(test_client):  # pylint: disable=redefined-outer-name
+def test_error_500_route(test_client):
     """Test the 500 route of the application.
 
     This test sends a GET request to a non-existent URL ("/500") using the test client
@@ -57,10 +57,10 @@ def test_error_500_route(test_client):  # pylint: disable=redefined-outer-name
     """
     response = test_client.get("/500")
     assert response.status_code == 500
-    assert b"Sorry, there is a problem with the service" in response.data
+    assert "Sorry, there is a problem with the service" in response.get_data(as_text=True)
 
 
-def test_error_400_route(test_client):  # pylint: disable=redefined-outer-name
+def test_error_400_route(test_client):
     """Test the 400 route of the application.
 
     This test sends a GET request to a non-existent URL ("/400") using the test client
@@ -70,10 +70,10 @@ def test_error_400_route(test_client):  # pylint: disable=redefined-outer-name
     """
     response = test_client.get("/400")
     assert response.status_code == 400
-    assert b"Sorry, there is a problem with the service" in response.data
+    assert "Sorry, there is a problem with the service" in response.get_data(as_text=True)
 
 
-def test_error_403_route(test_client):  # pylint: disable=redefined-outer-name
+def test_error_403_route(test_client):
     """Test the 403 route of the application.
 
     This test sends a GET request to a non-existent URL ("/403") using the test client
@@ -82,10 +82,10 @@ def test_error_403_route(test_client):  # pylint: disable=redefined-outer-name
     """
     response = test_client.get("/403")
     assert response.status_code == 403
-    assert b"Forbidden" in response.data
+    assert "Forbidden" in response.get_data(as_text=True)
 
 
-def test_error_401_route(test_client):  # pylint: disable=redefined-outer-name
+def test_error_401_route(test_client):
     """Test the 401 route of the application.
 
     This test sends a GET request to a non-existent URL ("/401") using the test client
@@ -94,4 +94,4 @@ def test_error_401_route(test_client):  # pylint: disable=redefined-outer-name
     """
     response = test_client.get("/401")
     assert response.status_code == 401
-    assert b"Unauthorised" in response.data
+    assert "Unauthorised" in response.get_data(as_text=True)
