@@ -27,7 +27,7 @@ def home() -> str:
 
     :return: 200 home page.
     """
-    return render_template("home.html")
+    return render_template("index.html")
 
 
 @main_blueprint.route("/health-check", methods=["GET"])
