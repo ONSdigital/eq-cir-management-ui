@@ -6,8 +6,8 @@ from eq_cir_management_ui import create_app
 from eq_cir_management_ui.config import config
 
 
-@pytest.fixture
-def test_client():
+@pytest.fixture(name="test_client")
+def create_client():
     """Creates and configures a test client for the application.
 
     This function initializes the application in testing mode and provides
@@ -23,7 +23,7 @@ def test_client():
         yield client
 
 
-def test_index_route(test_client):  # pylint: disable=redefined-outer-name
+def test_index_route(test_client):
     """Test the index route of the application.
 
     This test sends a GET request to the root URL ("/") using the test client
@@ -32,10 +32,10 @@ def test_index_route(test_client):  # pylint: disable=redefined-outer-name
     """
     response = test_client.get("/")
     assert response.status_code == 200
-    assert b"CI migration process" in response.data
+    assert "CI migration process" in response.get_data(as_text=True)
 
 
-def test_index_route_post_method_not_allowed(test_client):  # pylint: disable=redefined-outer-name
+def test_index_route_post_method_not_allowed(test_client):
     """Test the index route with POST method.
 
     This test sends a POST request to the root URL ("/") using the test client
@@ -45,7 +45,7 @@ def test_index_route_post_method_not_allowed(test_client):  # pylint: disable=re
     assert response.status_code == 405
 
 
-def test_health_check(test_client):  # pylint: disable=redefined-outer-name
+def test_health_check(test_client):
     """GIVEN a call to the health check.
     THEN 200 is returned.
     """
