@@ -28,7 +28,7 @@ eq-cir-management-ui
     - [Linting and Formatting](#linting-and-formatting)
 - [Contributing](#contributing)
 - [License](#license)
-<!-- markdown-link-check-enable -->
+    <!-- markdown-link-check-enable -->
 
 ## Getting Started
 
@@ -97,6 +97,8 @@ Then:
 
 This will install the design system into a local node_modules folder.
 The `@ons/design-system` package is then automatically added to the jinja configuration.
+
+The used design system version is also set in `templates/base.html`. It must be kept in line.
 
 ### Run Tests with Coverage
 

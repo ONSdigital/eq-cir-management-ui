@@ -1,7 +1,7 @@
 {%- extends 'layout/_template.njk' -%}
 
-{# To update the version, alter the package.json file #}
-{%- set design_system_version = ( "72.9.0" | env_override("DESIGN_SYSTEM_VERSION") ) -%}
+{# To update the version, also update the package.json file #}
+{%- set release_version = '72.10.0' -%}
 
 {% if page_title %}
   {% set page_title_value = page_title + ' - Collection Instrument Migration Service (CIMS)' %}
@@ -13,8 +13,7 @@
   set pageConfig = {
       "title": page_title_value,
       "cdn": {
-          "url": "https://cdn.ons.gov.uk/sdc/design-system/",
-          "version": design_system_version
+          "url": "https://cdn.ons.gov.uk/sdc/design-system/"
       },
       "wide": true,
       "cspNonce": cspNonce,
