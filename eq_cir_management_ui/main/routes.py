@@ -22,10 +22,10 @@ def before_request_func() -> None:
 
 
 @main_blueprint.route("/", methods=["GET"])
-def home() -> str:
-    """UI homepage.
+def index() -> str:
+    """UI index.
 
-    :return: 200 home page.
+    :return: 200 index page.
     """
     return render_template("index.html")
 
