@@ -39,14 +39,6 @@ def create_app(app_config: type[DefaultConfig]) -> Flask:
     return app
 
 
-def env_override(value: str, key: str) -> str:
-    """Add a custom filter to Jinja to retrieve environment variables.
-
-    :param app: The Flask application.
-    """
-    return os.getenv(key, value)
-
-
 def jinja_config(app: Flask) -> None:
     """Configuration for the Flask Jinja2 component. Here we provide a custom loader,
     so we can load from an array of sources.
@@ -62,8 +54,6 @@ def jinja_config(app: Flask) -> None:
     # Clean up white space.
     app.jinja_env.trim_blocks = True
     app.jinja_env.lstrip_blocks = True
-
-    app.jinja_env.filters["env_override"] = env_override
 
 
 def design_system_config() -> None:
