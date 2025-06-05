@@ -7,7 +7,7 @@ from pathlib import Path
 
 from flask import Flask
 from flask_talisman import Talisman
-from jinja2 import ChainableUndefined, ChoiceLoader, FileSystemLoader
+from jinja2 import ChainableUndefined, FileSystemLoader
 
 from eq_cir_management_ui.config.config import DefaultConfig
 from eq_cir_management_ui.errors.routes import errors_blueprint
@@ -56,7 +56,7 @@ def jinja_config(app: Flask) -> None:
     # loader for local templates and design system component templates
     file_system_loader = FileSystemLoader([Path("./node_modules/@ons/design-system"), Path("./templates")])
 
-    app.jinja_loader = ChoiceLoader([file_system_loader])
+    app.jinja_loader = file_system_loader
     app.jinja_env.undefined = ChainableUndefined
 
     # Clean up white space.
