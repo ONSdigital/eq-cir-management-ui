@@ -62,8 +62,6 @@ def design_system_config() -> None:
     Jinja. This enables the design system version to be defined once within the
     package.json file and then reused throughout the application. Primarily to
     declare the CSS version to use.
-
-    :param app: The Flask application.
     """
     with open(Path("./package.json"), encoding="utf-8") as file:
         package_json = json.load(file)
