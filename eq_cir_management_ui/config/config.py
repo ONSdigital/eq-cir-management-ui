@@ -1,7 +1,9 @@
+"""Configuration for the EQ CIR Management UI application."""
+
 import os
 
 
-class DefaultConfig:
+class DefaultConfig:  # pylint: disable=too-few-public-methods
     """The default application config."""
 
     # Default timeout for REST requests
@@ -14,7 +16,7 @@ class DefaultConfig:
     CDN_URL = os.getenv("CDN_URL", "https://cdn.ons.gov.uk")
 
 
-class DeployedConfig(DefaultConfig):
+class DeployedConfig(DefaultConfig):  # pylint: disable=too-few-public-methods
     """Configuration for the DEV and TEST environment.
 
     Extends DEFAULT Config.
@@ -23,7 +25,7 @@ class DeployedConfig(DefaultConfig):
     LOG_FORMAT = "JSON"
 
 
-class ProdConfig(DeployedConfig):
+class ProdConfig(DeployedConfig):  # pylint: disable=too-few-public-methods
     """Configuration for the UAT and PROD environment.
 
     Extends DEPLOYED Config.
