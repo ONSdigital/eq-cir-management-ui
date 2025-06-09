@@ -11,12 +11,12 @@
 
 {%-
   set pageConfig = {
-      "title": page_title_value,
-      "cdn": {
-          "url": "https://cdn.ons.gov.uk/sdc/design-system/"
-      },
-      "wide": true,
-      "cspNonce": cspNonce,
+    "title": page_title_value,
+    "cdn": {
+      "url": "https://cdn.ons.gov.uk/sdc/design-system/"
+    },
+    "wide": true,
+    "cspNonce": cspNonce,
   }
 -%}
 
@@ -24,10 +24,10 @@
   {%- from "components/header/_macro.njk" import onsHeader -%}
   {{
     onsHeader({
-        "title": "CIMS Management",
-        "wide": true,
-        "mastheadlogoUrl": "/",
-        "variants": 'internal',
+      "title": "CIMS Management",
+      "wide": true,
+      "mastheadlogoUrl": "/",
+      "variants": 'internal',
     })
   }}
 {%- endblock header -%}
@@ -37,7 +37,7 @@
 
   {{
     onsFooter({
-        "wide": true,
+      "wide": true,
     })
   }}
 {%- endblock footer -%}
