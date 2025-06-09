@@ -27,7 +27,7 @@ def trigger_403() -> Never:
 
 @utils_blueprint.route("/405")
 def trigger_405() -> Never:
-    """Simulate an unauthorized error."""
+    """Simulate an method not allowed error."""
     abort(405)
 
 

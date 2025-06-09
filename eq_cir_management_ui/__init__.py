@@ -26,7 +26,6 @@ def create_app(app_config: type[DefaultConfig]) -> Flask:
     app = Flask(__name__)
 
     app.config.from_object(app_config)
-    app.static_folder = str(Path("../static"))
 
     app.register_blueprint(main_blueprint)
     app.register_blueprint(errors_blueprint)
