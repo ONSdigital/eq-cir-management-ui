@@ -8,6 +8,7 @@ from pathlib import Path
 from flask import Flask
 from flask_talisman import Talisman
 from jinja2 import ChainableUndefined, FileSystemLoader
+from semver.version import Version
 
 from eq_cir_management_ui.config.config import DefaultConfig
 from eq_cir_management_ui.errors.routes import errors_blueprint
@@ -38,6 +39,11 @@ def create_app(app_config: type[DefaultConfig]) -> Flask:
     return app
 
 
+# Add a custom filter to Jinja to retrieve environment variables.
+def env_override(value, key):
+    return os.getenv(key, value)
+
+
 def jinja_config(app: Flask) -> None:
     """Configuration for the Flask Jinja2 component. Here we provide a custom loader,
     so we can load from an array of sources.
@@ -49,6 +55,7 @@ def jinja_config(app: Flask) -> None:
 
     app.jinja_loader = file_system_loader
     app.jinja_env.undefined = ChainableUndefined
+    app.jinja_env.filters["env_override"] = env_override
 
     # Clean up white space.
     app.jinja_env.trim_blocks = True
@@ -64,13 +71,22 @@ def design_system_config() -> None:
     """
     with open(Path("./package.json"), encoding="utf-8") as file:
         package_json = json.load(file)
-        design_system_version = package_json["dependencies"]["@ons/design-system"]
 
-        # Ensure version number only consists of numbers and fullstops.
-        def is_valid_version_char(s: str) -> bool:
-            return s.isnumeric() or s == "."
+        if "dependencies" in package_json:
+            try:
+                design_system_version = package_json["dependencies"]["@ons/design-system"]
+            except KeyError:
+                raise KeyError(
+                    "The '@ons/design-system' dependency is not found in package.json. "
+                    "Please ensure it is listed under 'dependencies'."
+                )
 
-        design_system_version = "".join(filter(is_valid_version_char, design_system_version))
+        if not Version.is_valid(design_system_version):
+            logging.error(
+                "The '@ons/design-system' dependency version is invalid. "
+                "Please ensure it follows semantic versioning."
+            )
+            raise ValueError("Invalid design system version.")
 
         os.environ["DESIGN_SYSTEM_VERSION"] = design_system_version
 

@@ -28,7 +28,7 @@ eq-cir-management-ui
     - [Linting and Formatting](#linting-and-formatting)
 - [Contributing](#contributing)
 - [License](#license)
-    <!-- markdown-link-check-enable -->
+  <!-- markdown-link-check-enable -->
 
 ## Getting Started
 
@@ -91,6 +91,13 @@ make
 
 The ONS design system needs to be installed using [npm](https://www.npmjs.com/).
 To install the ONS Design System npm package you will need to install [node.js](https://nodejs.org/en/).
+To do this, use the following commands:
+
+```bash
+nvm install
+nvm use
+```
+
 Then:
 
 - Run `npm install` from the project root directory.
@@ -98,7 +105,8 @@ Then:
 This will install the design system into a local node_modules folder.
 The `@ons/design-system` package is then automatically added to the jinja configuration.
 
-The used design system version is also set in `templates/base.html`. It must be kept in line.
+The used design system version is pulled directly from the version in package.json.
+A fallback version is set in `templates/base.html`.
 
 ### Run Tests with Coverage
 

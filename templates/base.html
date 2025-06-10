@@ -1,7 +1,7 @@
 {%- extends 'layout/_template.njk' -%}
 
-{# To update the version, also update the package.json file #}
-{%- set release_version = '72.10.0' -%}
+{# Version set below is a fallback only, if the derived environment variable is not set #}
+{%- set release_version = ( "72.10.0"| env_override("DESIGN_SYSTEM_VERSION") ) -%}
 
 {% if page_title %}
   {% set page_title_value = page_title + ' - Collection Instrument Migration Service (CIMS)' %}
