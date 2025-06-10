@@ -39,8 +39,12 @@ def create_app(app_config: type[DefaultConfig]) -> Flask:
     return app
 
 
-# Add a custom filter to Jinja to retrieve environment variables.
-def env_override(value, key):
+def env_override(value: str, key: str) -> str:
+    """Jinja filter to override a value with an environment variable if it exists.
+    :param value: The default value to use if the environment variable is not set.
+    :param key: The name of the environment variable to check.
+    :return: The value of the environment variable if it exists, otherwise the default value.
+    """
     return os.getenv(key, value)
 
 
@@ -75,20 +79,21 @@ def design_system_config() -> None:
         if "dependencies" in package_json:
             try:
                 design_system_version = package_json["dependencies"]["@ons/design-system"]
+                if not Version.is_valid(design_system_version):
+                    logger.exception(
+                        "The '@ons/design-system' dependency version is invalid. "
+                        "Please ensure it follows semantic versioning.",
+                    )
+                    raise ValueError() from None
+
+                os.environ["DESIGN_SYSTEM_VERSION"] = design_system_version
+
             except KeyError:
-                raise KeyError(
+                logger.exception(
                     "The '@ons/design-system' dependency is not found in package.json. "
-                    "Please ensure it is listed under 'dependencies'."
+                    "Please ensure it is listed under 'dependencies'.",
                 )
-
-        if not Version.is_valid(design_system_version):
-            logging.error(
-                "The '@ons/design-system' dependency version is invalid. "
-                "Please ensure it follows semantic versioning."
-            )
-            raise ValueError("Invalid design system version.")
-
-        os.environ["DESIGN_SYSTEM_VERSION"] = design_system_version
+                raise KeyError() from None
 
 
 def configure_secure_headers(app: Flask) -> None:
