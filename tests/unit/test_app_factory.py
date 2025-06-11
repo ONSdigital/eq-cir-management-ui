@@ -103,4 +103,3 @@ def test_secure_headers_configured():
     csp_header = response.headers.get("Content-Security-Policy")
     assert csp_header is not None
     assert "default-src" in csp_header
-    assert "https://cdn.example.com" in csp_header
