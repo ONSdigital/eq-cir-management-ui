@@ -32,6 +32,10 @@ lint:  ## Run all linters (black/ruff/pylint/mypy).
 run:  ## Run flask on port 5100.
 	poetry run flask --app app run --port 5100
 
+.PHONY: gunicorn
+gunicorn:  ## Run the app with Gunicorn.
+	poetry run gunicorn --bind 0.0.0.0:5100 app:app
+
 .PHONY: test
 test:  ## Run the tests and check coverage.
 	poetry run pytest -n auto --cov=eq_cir_management_ui --cov-report term-missing --cov-fail-under=100

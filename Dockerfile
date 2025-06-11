@@ -20,4 +20,4 @@ EXPOSE 5100
 
 HEALTHCHECK CMD curl --fail http://localhost:5100 || exit 1 
 
-CMD ["python", "app.py", "--host", "0.0.0.0", "--port", "5100"]
+CMD ["gunicorn", "--bind", "0.0.0.0:5100", "app:app"]
