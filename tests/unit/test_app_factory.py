@@ -6,8 +6,6 @@ design system configuration, and secure headers.
 import json
 import os
 
-import pytest
-
 from eq_cir_management_ui import create_app, design_system_config, env_override
 from eq_cir_management_ui.config.config import DefaultConfig
 
