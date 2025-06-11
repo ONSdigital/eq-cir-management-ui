@@ -76,24 +76,20 @@ def design_system_config() -> None:
     with open(Path("./package.json"), encoding="utf-8") as file:
         package_json = json.load(file)
 
-        if "dependencies" in package_json:
-            try:
-                design_system_version = package_json["dependencies"]["@ons/design-system"]
-                if not Version.is_valid(design_system_version):
-                    logger.exception(
-                        "The '@ons/design-system' dependency version is invalid. "
-                        "Please ensure it follows semantic versioning.",
-                    )
-                    raise ValueError() from None
+        design_system_version = package_json.get("dependencies", {}).get("@ons/design-system")
 
-                os.environ["DESIGN_SYSTEM_VERSION"] = design_system_version
-
-            except KeyError:
-                logger.exception(
-                    "The '@ons/design-system' dependency is not found in package.json. "
-                    "Please ensure it is listed under 'dependencies'.",
-                )
-                raise KeyError() from None
+        if not design_system_version:
+            logger.exception(
+                "The '@ons/design-system' dependency is not found in package.json. "
+                "Please ensure it is listed under 'dependencies'.",
+            )
+        elif not Version.is_valid(design_system_version):
+            logger.exception(
+                "The '@ons/design-system' dependency version is invalid. "
+                "Please ensure it follows semantic versioning.",
+            )
+        else:
+            os.environ["DESIGN_SYSTEM_VERSION"] = design_system_version
 
 
 def configure_secure_headers(app: Flask) -> None:

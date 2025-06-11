@@ -69,7 +69,7 @@ def test_design_system_config_logs_invalid_version(monkeypatch, tmp_path, caplog
 
     monkeypatch.chdir(tmp_path)
 
-    with caplog.at_level("ERROR"), pytest.raises(ValueError):
+    with caplog.at_level("ERROR"):
         design_system_config()
 
     assert "semantic versioning" in caplog.text
@@ -82,7 +82,7 @@ def test_design_system_config_logs_missing_dependency(monkeypatch, tmp_path, cap
 
     monkeypatch.chdir(tmp_path)
 
-    with caplog.at_level("ERROR"), pytest.raises(KeyError):
+    with caplog.at_level("ERROR"):
         design_system_config()
 
     assert "@ons/design-system' dependency is not found" in caplog.text
