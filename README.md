@@ -28,7 +28,7 @@ eq-cir-management-ui
     - [Linting and Formatting](#linting-and-formatting)
 - [Contributing](#contributing)
 - [License](#license)
-      <!-- markdown-link-check-enable -->
+  <!-- markdown-link-check-enable -->
 
 ## Getting Started
 
@@ -79,7 +79,7 @@ Ensure you have the following installed:
 
     then run:
 
-    ```
+    ```bash
     npm install
     ```
 
