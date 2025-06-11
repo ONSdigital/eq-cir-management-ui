@@ -28,7 +28,7 @@ eq-cir-management-ui
     - [Linting and Formatting](#linting-and-formatting)
 - [Contributing](#contributing)
 - [License](#license)
-  <!-- markdown-link-check-enable -->
+      <!-- markdown-link-check-enable -->
 
 ## Getting Started
 
@@ -69,6 +69,21 @@ Ensure you have the following installed:
     ```bash
     make install
     ```
+
+    To install the ONS Design System using node (fuller details below):
+
+    ```bash
+    nvm install
+    nvm use
+    ```
+
+    then run:
+
+    ```
+    npm install
+    ```
+
+    to add the Design System.
 
 3. Run the application
 
