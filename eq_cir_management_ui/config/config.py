@@ -10,6 +10,7 @@ class DefaultConfig:  # pylint: disable=too-few-public-methods
     LOG_LEVEL = os.environ.get("LOG_LEVEL", "INFO")
 
     CDN_URL = os.getenv("CDN_URL", "https://cdn.ons.gov.uk")
+    SESSION_COOKIE_SECURE = False
 
 
 class DeployedConfig(DefaultConfig):  # pylint: disable=too-few-public-methods
