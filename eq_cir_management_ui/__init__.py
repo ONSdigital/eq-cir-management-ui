@@ -73,7 +73,7 @@ def design_system_config() -> None:
     package.json file and then reused throughout the application. Primarily to
     declare the CSS version to use.
     """
-    with open(Path(__file__).parent.parent / "package.json", encoding="utf-8") as file:
+    with open(Path("./package.json"), encoding="utf-8") as file:
         package_json = json.load(file)
 
         design_system_version = package_json.get("dependencies", {}).get("@ons/design-system")
