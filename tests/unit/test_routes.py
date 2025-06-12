@@ -52,3 +52,10 @@ def test_health_check(test_client):
     response = test_client.get("/health-check")
 
     assert response.status_code == 200
+
+
+def test_favicon(test_client):
+    response = test_client.get('/favicon.ico')
+    assert response.status_code == 200
+    assert response.mimetype == 'image/vnd.microsoft.icon'
+    assert response.data  # Make sure it's not empty
