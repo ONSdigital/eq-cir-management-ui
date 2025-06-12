@@ -28,7 +28,7 @@ eq-cir-management-ui
     - [Linting and Formatting](#linting-and-formatting)
 - [Contributing](#contributing)
 - [License](#license)
-  <!-- markdown-link-check-enable -->
+    <!-- markdown-link-check-enable -->
 
 ## Getting Started
 
@@ -101,6 +101,8 @@ A Makefile is provided to simplify common development tasks. To view all availab
 ```bash
 make
 ```
+
+To run the UI in debug mode, you can add a root `.env` file, and add the setting `FLASK_DEBUG=1`.
 
 ## ONS Design System
 
