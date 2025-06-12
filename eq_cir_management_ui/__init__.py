@@ -27,6 +27,7 @@ def create_app(app_config: type[DefaultConfig]) -> Flask:
     app = Flask(__name__)
 
     app.config.from_object(app_config)
+    app.static_folder = Path("../static")
 
     app.register_blueprint(main_blueprint)
     app.register_blueprint(errors_blueprint)
@@ -73,7 +74,7 @@ def design_system_config() -> None:
     package.json file and then reused throughout the application. Primarily to
     declare the CSS version to use.
     """
-    with open(Path("./package.json"), encoding="utf-8") as file:
+    with open(Path(__file__).parent.parent / "package.json", encoding="utf-8") as file:
         package_json = json.load(file)
 
         design_system_version = package_json.get("dependencies", {}).get("@ons/design-system")
