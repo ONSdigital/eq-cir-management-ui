@@ -1,19 +1,17 @@
 """Routes for the EQ CIR Management UI utils."""
 
-from typing import Never
+from typing import Never, cast
 
-from flask import Blueprint, abort, current_app, send_from_directory
+from flask import Blueprint, Response, abort, current_app, send_from_directory
 
 utils_blueprint = Blueprint("utils", __name__)
 
 
-@utils_blueprint.route('/favicon.ico')
-def favicon():
-    return send_from_directory(
-        current_app.static_folder,
-        'favicon.ico',
-        mimetype='image/vnd.microsoft.icon'
-    )
+@utils_blueprint.route("/favicon.ico")
+def favicon() -> Response:
+    """Simulate a favicon request."""
+    static_folder = cast(str, current_app.static_folder)
+    return send_from_directory(static_folder, "favicon.ico", mimetype="image/vnd.microsoft.icon")
 
 
 @utils_blueprint.route("/400")

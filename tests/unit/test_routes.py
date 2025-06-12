@@ -55,7 +55,10 @@ def test_health_check(test_client):
 
 
 def test_favicon(test_client):
-    response = test_client.get('/favicon.ico')
+    """GIVEN a call to the favicon.
+    THEN 200 is returned.
+    """
+    response = test_client.get("/favicon.ico")
     assert response.status_code == 200
-    assert response.mimetype == 'image/vnd.microsoft.icon'
+    assert response.mimetype == "image/vnd.microsoft.icon"
     assert response.data  # Make sure it's not empty
