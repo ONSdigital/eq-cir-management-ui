@@ -4,6 +4,11 @@ WORKDIR /eq_cir_management_ui
 
 COPY pyproject.toml poetry.lock /eq_cir_management_ui/
 
+ENV WEB_SERVER_WORKERS=3
+ENV WEB_SERVER_THREADS=10
+ENV HTTP_KEEP_ALIVE=2
+ENV GUNICORN_CMD_ARGS="-c gunicorn_config.py"
+
 RUN groupadd -r appuser && useradd -r -g appuser -u 999 appuser && chown -R appuser:appuser .
 
 RUN pip install --no-cache-dir poetry==2.1.2 && \
