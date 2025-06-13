@@ -16,8 +16,10 @@ eq-cir-management-ui
 
 ## Table of Contents
 
-[//]: # (:TODO: Enable link checking once https://github.com/tcort/markdown-link-check/issues/250 is resolved.)
+[//]: # ":TODO: Enable link checking once https://github.com/tcort/markdown-link-check/issues/250 is resolved."
+
 <!-- markdown-link-check-disable -->
+
 - [Getting Started](#getting-started)
     - [Pre-requisites](#pre-requisites)
     - [Installation](#installation)
@@ -26,7 +28,7 @@ eq-cir-management-ui
     - [Linting and Formatting](#linting-and-formatting)
 - [Contributing](#contributing)
 - [License](#license)
-<!-- markdown-link-check-enable -->
+    <!-- markdown-link-check-enable -->
 
 ## Getting Started
 
@@ -47,32 +49,47 @@ Ensure you have the following installed:
 
 1. Clone the repository and install the required dependencies.
 
-   ```bash
-   git clone https://github.com/ONSdigital/eq-cir-management-ui.git
-   ```
+    ```bash
+    git clone https://github.com/ONSdigital/eq-cir-management-ui.git
+    ```
 
 2. Install dependencies
 
-   [Poetry](https://python-poetry.org/) is used to manage dependencies in this project. For more information, read
-   the [Poetry documentation](https://python-poetry.org/).
+    [Poetry](https://python-poetry.org/) is used to manage dependencies in this project. For more information, read
+    the [Poetry documentation](https://python-poetry.org/).
 
-   To install all dependencies, including development dependencies, run:
+    To install all dependencies, including development dependencies, run:
 
-   ```bash
-   make install-dev
-   ```
+    ```bash
+    make install-dev
+    ```
 
-   To install only production dependencies, run:
+    To install only production dependencies, run:
 
-   ```bash
-   make install
-   ```
+    ```bash
+    make install
+    ```
+
+    To install the ONS Design System using node (fuller details below):
+
+    ```bash
+    nvm install
+    nvm use
+    ```
+
+    then run:
+
+    ```bash
+    npm install
+    ```
+
+    to add the Design System.
 
 3. Run the application
 
-   ```bash
-   make run
-   ```
+    ```bash
+    make run
+    ```
 
 ## Development
 
@@ -84,6 +101,29 @@ A Makefile is provided to simplify common development tasks. To view all availab
 ```bash
 make
 ```
+
+To run the UI in debug mode, you can add a root `.env` file, and add the setting `FLASK_DEBUG=1`.
+
+## ONS Design System
+
+The ONS design system needs to be installed using [npm](https://www.npmjs.com/).
+To install the ONS Design System npm package you will need to install [node.js](https://nodejs.org/en/).
+To do this, use the following commands:
+
+```bash
+nvm install
+nvm use
+```
+
+Then:
+
+- Run `npm install` from the project root directory.
+
+This will install the design system into a local node_modules folder.
+The `@ons/design-system` package is then automatically added to the jinja configuration.
+
+The used design system version is pulled directly from the version in package.json.
+A fallback version is set in `templates/base.html`.
 
 ### Run Tests with Coverage
 

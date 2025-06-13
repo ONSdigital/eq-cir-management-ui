@@ -1,0 +1,12 @@
+{
+    "plugins": ["prettier-plugin-jinja-template"],
+    "printWidth": 140,
+    "overrides": [
+        {
+            "files": ["*.html", "*.njk"],
+            "options": {
+                "parser": "jinja-template"
+            }
+        }
+    ]
+}
