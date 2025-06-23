@@ -36,4 +36,5 @@ def health() -> tuple[str, int]:
 
     :return: Empty 200 response.
     """
+    logger.info("Health check hit")
     return "", 200
