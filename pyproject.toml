@@ -14,7 +14,7 @@ structlog = "^25.3.0"
 flask-talisman = "^1.1.0"
 semver = "^3.0.4"
 gunicorn = "^23.0.0"
-python-dotenv = "^1.1.0"
+python-dotenv = "^1.1.1"
 
 [tool.poetry.group.dev.dependencies]
 # :TODO: Remove pylint when ruff supports all pylint rules
@@ -22,10 +22,10 @@ python-dotenv = "^1.1.0"
 pylint = "^3.3.6"
 black = "^25.1.0"
 pytest = "^8.3.5"
-pytest-xdist = "^3.6.1"
-ruff = "^0.11.5"
+pytest-xdist = "^3.8.0"
+ruff = "^0.12.3"
 pytest-cov = "^6.1.1"
-mypy = "^1.15.0"
+mypy = "^1.17.0"
 
 [tool.black]
 line-length = 120
