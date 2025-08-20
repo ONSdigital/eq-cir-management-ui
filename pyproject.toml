@@ -9,23 +9,23 @@ package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.12"
-flask = "^3.1.0"
+flask = "^3.1.2"
 structlog = "^25.3.0"
 flask-talisman = "^1.1.0"
 semver = "^3.0.4"
 gunicorn = "^23.0.0"
-python-dotenv = "^1.1.0"
+python-dotenv = "^1.1.1"
 
 [tool.poetry.group.dev.dependencies]
 # :TODO: Remove pylint when ruff supports all pylint rules
 # :TODO: Remove black when ruff supports all black rules
-pylint = "^3.3.6"
+pylint = "^3.3.8"
 black = "^25.1.0"
 pytest = "^8.3.5"
-pytest-xdist = "^3.6.1"
-ruff = "^0.11.5"
+pytest-xdist = "^3.8.0"
+ruff = "^0.12.9"
 pytest-cov = "^6.1.1"
-mypy = "^1.15.0"
+mypy = "^1.17.1"
 
 [tool.black]
 line-length = 120
