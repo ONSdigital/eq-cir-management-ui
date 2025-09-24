@@ -1,5 +1,9 @@
 {
-  "ignorePatterns": [],
+  "ignorePatterns": [
+    {
+      "pattern": "^https://www\\.npmjs\\.com/"
+    }
+  ],
   "retryOn429": true,
   "retryCount": 3,
   "fallbackRetryDelay": "30s"
