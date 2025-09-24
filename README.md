@@ -106,7 +106,7 @@ To run the UI in debug mode, you can add a root `.env` file, and add the setting
 
 ## ONS Design System
 
-The ONS design system needs to be installed using [npm](https://www.npmjs.com/).
+The ONS design system needs to be installed using [npm](https://www.npmjs.com/package/npm).
 To install the ONS Design System npm package you will need to install [node.js](https://nodejs.org/en/).
 To do this, use the following commands:
 
