@@ -16,7 +16,7 @@ logger = logging.getLogger(__name__)
 @main_blueprint.before_request
 def before_request_func() -> None:
     """Log the request before it is processed."""
-    if request.endpoint != "health-check":
+    if request.endpoint != "status":
         message = "Request received"
         logger.info(message)
 
@@ -30,11 +30,11 @@ def index() -> str:
     return render_template("index.html")
 
 
-@main_blueprint.route("/health-check", methods=["GET"])
-def health() -> tuple[str, int]:
-    """Health check endpoint.
+@main_blueprint.route("/status", methods=["GET"])
+def status() -> tuple[str, int]:
+    """Status check endpoint.
 
     :return: Empty 200 response.
     """
-    logger.info("Health check hit")
+    logger.info("Status check hit")
     return "", 200

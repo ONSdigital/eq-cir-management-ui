@@ -45,11 +45,11 @@ def test_index_route_post_method_not_allowed(test_client):
     assert response.status_code == 405
 
 
-def test_health_check(test_client):
-    """GIVEN a call to the health check.
+def test_status_check(test_client):
+    """GIVEN a call to the status check.
     THEN 200 is returned.
     """
-    response = test_client.get("/health-check")
+    response = test_client.get("/status")
 
     assert response.status_code == 200
 

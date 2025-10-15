@@ -23,6 +23,6 @@ USER appuser
 
 EXPOSE 5100
 
-HEALTHCHECK CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:5100/health-check')" || exit 1
+HEALTHCHECK CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:5100/status')" || exit 1
 
 CMD ["gunicorn", "--bind", "0.0.0.0:5100", "app:app"]

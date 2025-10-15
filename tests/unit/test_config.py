@@ -2,7 +2,12 @@
 
 import pytest
 
-from eq_cir_management_ui.config.config import DefaultConfig, DeployedConfig, ProdConfig, get_config
+from eq_cir_management_ui.config.config import (
+    DefaultConfig,
+    DeployedConfig,
+    ProdConfig,
+    get_config,
+)
 
 
 @pytest.mark.parametrize(

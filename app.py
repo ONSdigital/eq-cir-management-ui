@@ -5,12 +5,12 @@ import os
 from dotenv import load_dotenv
 
 from eq_cir_management_ui import create_app
-from eq_cir_management_ui.config.config import config
+from eq_cir_management_ui.config.config import DefaultConfig
 
 # Load .env file
 load_dotenv()
 
-app = create_app(config)
+app = create_app(DefaultConfig)
 
 if __name__ == "__main__":
     host = os.environ.get("HOST", "127.0.0.1")
