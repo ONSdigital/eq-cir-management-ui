@@ -15,30 +15,30 @@ def favicon() -> Response:
 
 
 @utils_blueprint.route("/400")
-def trigger_400() -> None:
+def trigger_400() -> Response:
     """Simulate an unauthorized error."""
     abort(400)
 
 
 @utils_blueprint.route("/401")
-def trigger_401() -> None:
+def trigger_401() -> Response:
     """Simulate an unauthorized error."""
     abort(401)
 
 
 @utils_blueprint.route("/403")
-def trigger_403() -> None:
+def trigger_403() -> Response:
     """Simulate a forbidden error."""
     abort(403)
 
 
 @utils_blueprint.route("/405")
-def trigger_405() -> None:
+def trigger_405() -> Response:
     """Simulate an method not allowed error."""
     abort(405)
 
 
 @utils_blueprint.route("/500")
-def trigger_500() -> None:
+def trigger_500() -> Response:
     """Simulate an internal server error."""
     abort(500)
