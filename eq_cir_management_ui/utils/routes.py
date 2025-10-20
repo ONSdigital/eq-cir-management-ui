@@ -1,6 +1,6 @@
 """Routes for the EQ CIR Management UI utils."""
 
-from typing import Never, cast
+from typing import cast
 
 from flask import Blueprint, Response, abort, current_app, send_from_directory
 
@@ -15,30 +15,30 @@ def favicon() -> Response:
 
 
 @utils_blueprint.route("/400")
-def trigger_400() -> Never:
+def trigger_400() -> Response:
     """Simulate an unauthorized error."""
     abort(400)
 
 
 @utils_blueprint.route("/401")
-def trigger_401() -> Never:
+def trigger_401() -> Response:
     """Simulate an unauthorized error."""
     abort(401)
 
 
 @utils_blueprint.route("/403")
-def trigger_403() -> Never:
+def trigger_403() -> Response:
     """Simulate a forbidden error."""
     abort(403)
 
 
 @utils_blueprint.route("/405")
-def trigger_405() -> Never:
+def trigger_405() -> Response:
     """Simulate an method not allowed error."""
     abort(405)
 
 
 @utils_blueprint.route("/500")
-def trigger_500() -> Never:
+def trigger_500() -> Response:
     """Simulate an internal server error."""
     abort(500)

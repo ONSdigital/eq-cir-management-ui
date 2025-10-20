@@ -22,7 +22,7 @@ def test_app_creation_registers_blueprints(app):
     rules = [rule.endpoint for rule in app.url_map.iter_rules()]
 
     assert "main.index" in rules
-    assert "main.health" in rules
+    assert "main.status" in rules
     assert "utils.trigger_400" in rules
     assert "utils.trigger_401" in rules
     assert "utils.trigger_403" in rules

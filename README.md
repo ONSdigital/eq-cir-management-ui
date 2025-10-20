@@ -39,9 +39,9 @@ To get a local copy up and running, follow these simple steps.
 Ensure you have the following installed:
 
 1. **Python**: Version specified in `.python-version`. We recommend using [pyenv](https://github.com/pyenv/pyenv) for
-   managing Python versions.
+    managing Python versions.
 2. **[Poetry](https://python-poetry.org/)**: This is used to manage package dependencies and virtual
-   environments.
+    environments.
 3. **[Docker](https://docs.docker.com/engine/install/)**
 4. **Operation System**: Ubuntu/MacOS
 
